@@ -60,31 +60,30 @@ public class Tabela {
     }
 
     static boolean winsDiag(Tabela t, int lastMoveX, int lastMoveY, char lastplayer) {
-        //System.out.println("LastMove: " + lastMoveX + ":" + lastMoveY);
-        int checker=0;
+        int checkerTopRight=0,checkerTopLeft=0;
 
         //Diagonal top-right to bot-left
         for(int i = -3 ; i <= 3 /*maior diagonal possível*/; i++) {
             //verifica se está in bounds
             if(lastMoveX+i>=0 && lastMoveY-i>=0 && lastMoveX+i<6 && lastMoveY-i<7){
-                //se o checker chegar a 4, quer dizer que são 4 em linha
-                if(t.arr[lastMoveX+i][lastMoveY-i]==lastplayer)checker++;
-                if(checker==4){
+                //char da posição a verificar é igual ao último jogador
+                if(t.arr[lastMoveX+i][lastMoveY-i]==lastplayer)checkerTopRight++;
+                //se o checker chegar a 4, quer dizer que são 4 em linha, ganha
+                if(checkerTopRight==4){
                     t.winner = lastplayer;
                     return true;
                 }
-            }else checker=0;
-        }
-        checker=0;
-        //Diagonal top-left to bot-right
-        for(int i = -3 ; i <= 3; i++) {
+            }else checkerTopRight=0;
+
+
+            //Diagonal top-left to bot-right
             if(lastMoveX+i>=0 && lastMoveY+i>=0 && lastMoveX+i<6 && lastMoveY+i<7){
-                if(t.arr[lastMoveX+i][lastMoveY+i]==lastplayer)checker++;
-                if(checker==4){
+                if(t.arr[lastMoveX+i][lastMoveY+i]==lastplayer)checkerTopLeft++;
+                if(checkerTopLeft==4){
                     t.winner = lastplayer;
                     return true;
                 }
-            }else checker=0;
+            }else checkerTopLeft=0;
         }
         return false;
     }
