@@ -68,6 +68,7 @@ public class Tabela {
             if(lastMoveX+i>=0 && lastMoveY-i>=0 && lastMoveX+i<6 && lastMoveY-i<7){
                 //char da posição a verificar é igual ao último jogador
                 if(t.arr[lastMoveX+i][lastMoveY-i]==lastplayer)checkerTopRight++;
+                else checkerTopRight=0;
                 //se o checker chegar a 4, quer dizer que são 4 em linha, ganha
                 if(checkerTopRight==4){
                     t.winner = lastplayer;
@@ -79,6 +80,7 @@ public class Tabela {
             //Diagonal top-left to bot-right
             if(lastMoveX+i>=0 && lastMoveY+i>=0 && lastMoveX+i<6 && lastMoveY+i<7){
                 if(t.arr[lastMoveX+i][lastMoveY+i]==lastplayer)checkerTopLeft++;
+                else checkerTopLeft=0;
                 if(checkerTopLeft==4){
                     t.winner = lastplayer;
                     return true;

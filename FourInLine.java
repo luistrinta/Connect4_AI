@@ -19,7 +19,7 @@ public class FourInLine extends Tabela{
 			//System.out.println("Ultima jogada " + t.lastplayer);
 				if(checkWinners(t)){
 					System.out.println("O jogador "+t.winner+" venceu!");
-					break;
+					return;
 				}			
 			
 			System.out.println("Player 2 :");
@@ -28,10 +28,10 @@ public class FourInLine extends Tabela{
 			System.out.println("Ultima jogada " + t.lastplayer);
 				if(checkWinners(t)){
 					System.out.println("O jogador "+t.winner+" venceu!");;
-					break;
+					return;
 				}
 		}
-			System.out.println("Não há vencedores");
+		System.out.println("Não há vencedores");
 
 	}
 }
