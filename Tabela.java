@@ -1,3 +1,4 @@
+import java.util.*;
 public class Tabela {
     public static char[][] arr;
     //posição da ultima jogada
@@ -5,6 +6,8 @@ public class Tabela {
     public static int lastMoveY;
     public char winner;
     public char lastplayer;
+    public static char playerChar='o';
+    public static char aiChar='x';
 
 
     Tabela() {
@@ -29,7 +32,7 @@ public class Tabela {
         }
     }
 
-    static void play(Tabela t, char jogada, int y) {
+    static Tabela play(Tabela t, char jogada, int y) {
 
 
         int x = 0;
@@ -37,12 +40,13 @@ public class Tabela {
 
 
         while(x < 6 && t.arr[x][y - 1] == '-') {
-            System.out.println(x);
+            //System.out.println(x);
             x++;
         }
         t.lastMoveX = x - 1;
         t.arr[t.lastMoveX][t.lastMoveY] = jogada;
         t.lastplayer = jogada;
+        return t;
 
     }
 
@@ -120,6 +124,22 @@ public class Tabela {
 
         }
         return true;
+    }
+
+    //Vez humana
+    static Tabela playerMovement(Tabela t,char simbolo){
+        System.out.print("Jogador "+simbolo+": ");
+        int move = scan.nextInt();
+        while(move<1 || move > 7 || !isAvailable(t,move-1)){
+            System.out.println("Movimento inválido.\nJogador "+simbolo+": "); 
+            move = scan.nextInt();
+        }
+        return play(t,simbolo,move);
+    }
+    static Scanner scan = new Scanner(System.in);
+    //Verifica se a coluna não está cheia
+    static boolean isAvailable(Tabela t,int column){
+        return t.arr[0][column]=='-';
     }
 
 
