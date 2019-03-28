@@ -38,9 +38,9 @@ public class Algoritmos extends Tabela {
                     t.bestY = i;
                 }
 
-                if(depth == 7 ) {
+               /* if(depth == 7 ) {
                     System.out.println("Max value of " + i + " is :" + best);
-                }
+                }*/
             }
 
             return best;
@@ -119,44 +119,6 @@ public class Algoritmos extends Tabela {
     }
 
 
-    //AUXILIARES MONTE CARLOS
-    public static ArrayList<Integer> movimentosPossiveis(Tabela t) {
-
-        ArrayList<Integer> filhos = new ArrayList<Integer>();
-
-        for(int i = 0 ; i < 7 ; i++ ) {
-            if(t.arr[0][i] == '-')
-                filhos.add(i);
-        }
-        return filhos;
-    }
-
-
-    class Node {
-       int action;
-       int visits; // number of times visited
-       float reward; // accumulated reward value
-       Node parent; // null if root
-       LinkedList<Node> children;
-       
-       Node(){
-        visits = 0;
-        reward = 0;
-        parent = null;
-        children = new LinkedList<Node>();
-       }
-
-       Node(Node n){
-        visits = 0;
-        reward = 0;
-        parent = n;
-        children = new LinkedList<Node>();
-       }
-       
     
-    void update(int value){this.reward += value;}  // update node and backpropagate to parent
-
-    void addChild(Node child){this.children.add(child);} // add child node
-    }
 
 }

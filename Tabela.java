@@ -3,6 +3,7 @@ import java.lang.*;
 public class Tabela {
     char[][] arr;
     int bestY;
+    char lastplayer;
     //verificam se o t.arr ja acabou
     int lastMoveX;
     int lastMoveY;
@@ -16,6 +17,7 @@ public class Tabela {
             for(int i = 0; i < 7 ; i++)this.arr[j][i] = '-';
         }
         this.valor = 0;
+        this.lastplayer = 'N';
     }
 
     Tabela(Tabela t) {
@@ -26,7 +28,7 @@ public class Tabela {
         }
         this.lastMoveX = t.lastMoveX;
         this.lastMoveY = t.lastMoveY;
-
+        this.lastplayer =t.lastplayer;
     }
 
 
@@ -54,6 +56,8 @@ public class Tabela {
         t0.lastMoveY = y;
         t0.lastMoveX = x;
         t0.valor = scoreSum(t0);
+        t0.lastplayer = jogada;
+
         return t0;
 
     }
