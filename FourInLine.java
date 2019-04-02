@@ -16,10 +16,12 @@ public class FourInLine extends Algoritmos {
         while(!isCompleted(t)) {
             
 
-            t = playerMovement(t, 'o' );
+
+            int x = alpha_beta_play(t,9, Integer.MIN_VALUE , Integer.MAX_VALUE , 'x');
+            System.out.println("Computador jogou na :"+t.bestY);
+            t = play(t, 'x', t.bestY);
             printTabela(t);
             System.out.println("0 1 2 3 4 5 6");
-
             
 
             if(checkWinners(t,'x')){
@@ -31,12 +33,12 @@ public class FourInLine extends Algoritmos {
                 System.out.println("Player o won");
                 return;
             }
-            int x = alpha_beta_play(t, 9 , Integer.MIN_VALUE , Integer.MAX_VALUE , 'x');
-            System.out.println("Computador jogou na :"+t.bestY);
-            t = play(t, 'x', t.bestY);
-            printTabela(t);
-            System.out.println("0 1 2 3 4 5 6");
 
+            t = playerMovement(t, 'o' );
+            printTabela(t);
+            System.out.println(scoreSum(t));
+
+            System.out.println("0 1 2 3 4 5 6");
             
 
             if(checkWinners(t,'x')){

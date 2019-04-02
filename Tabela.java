@@ -203,71 +203,6 @@ public class Tabela {
     }
 
 
-    //mini_max
-    public static int minimax_play(Tabela t, int depth) {
-        return max_value(t, depth);
-    }
-
-
-
-    //max_value
-
-    public static int max_value(Tabela t, int depth) {
-
-        if(depth == 0) {
-            //System.out.println(t.bestY);
-            return scoreSum(t);
-        } 
-
-        
-        else {
-
-            int best = Integer.MIN_VALUE;
-
-            int next;
-
-            for(int i : t.getMoves()) {
-                next = min_value(t.gerarFilhos('x', i), depth - 1);
-                if(next > best) {
-                    best = next;
-                    t.bestY = i;
-                }
-
-                if(depth == 7 ) {
-                    System.out.println("Max value of " + i + " is :" + best);
-                }
-            }
-
-            return best;
-        }
-    }
-
-
-    //min_value
-
-    public static int min_value(Tabela t, int depth) {
-
-
-        if(depth == 0)
-            return scoreSum(t);
-
-        
-        else {
-
-
-            int best = Integer.MAX_VALUE;
-
-            int next;
-            for(int i : t.getMoves()) {
-                next = max_value(t.gerarFilhos('o', i), depth - 1);
-                if(next < best) {
-                    best = next;
-                    t.bestY = i;
-                }
-            }
-            return best;
-        }
-    }
 
     //Valor dos pontos
     static int pontos(int xcounter, int ocounter) {
@@ -426,6 +361,19 @@ public class Tabela {
             }
         }
         return total; //Return dos Pontos do tabuleiro
+    
+
+    }
+         public boolean canPlace(Tabela t, int  i) {
+        if(t.arr[0][i] == '-')return true;
+
+        return false;
+    }
+
+    public Tabela auxPlay(Tabela t, int move) {
+        if(t.lastplayer == 'x') {
+            return play(t, 'o', move);
+        } else return play(t, 'x', move);
     }
 
 }

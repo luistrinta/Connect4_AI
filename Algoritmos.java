@@ -13,7 +13,7 @@ public class Algoritmos extends Tabela {
 
     //max_value
 
-    public static int max_value(Tabela t, int depth) {
+    public static int max_value(Tabela t, int depth ) {
 
         if(checkWinners(t, 'x'))return 512;
         if(checkWinners(t, 'o'))return -512;
