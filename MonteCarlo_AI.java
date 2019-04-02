@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MC_AI extends Algoritmos {
+public class MonteCarlo_AI extends Algoritmos {
     private Node root; // estado inicial
 
     private static final double EXPLORATION_PARAMETER = Math.sqrt(2);
@@ -207,7 +207,7 @@ public class MC_AI extends Algoritmos {
         Tabela board2 = new Tabela();
         tabela.lastplayer = 'N';
 
-        MC_AI ai = new MC_AI(tabela, GIVEN_TIME);
+        MonteCarlo_AI ai = new MonteCarlo_AI(tabela, GIVEN_TIME);
 
         System.out.println("1.AI vs AI");
         System.out.println("2.Jogador vs AI");
