@@ -1,30 +1,30 @@
-    /*---------------------------------------------------------
-        Implementação do algoritmo Monte Carlo Tree Search
-        Devido ao numero de classes auxiliares utilizadas decidimos 
-        que seria melhor por questoes de organização a criação de
-        um ficheiro separado para o algoritmo em questão
-    -----------------------------------------------------------*/
+    /*-----------------------------------------------------------------
+    |    Implementação do algoritmo Monte Carlo Tree Search (MCTS)    |  
+    |    Devido ao numero de classes auxiliares utilizadas decidimos  |
+    |    que seria melhor por questoes de organização a criação de    |
+    |    um ficheiro separado para o algoritmo em questão             |
+    -----------------------------------------------------------------*/
 
 import java.util.*; 
 
 
 public class MonteCarlo extends Algoritmos {
-
-
-    //Classe privada Node utilizada apenas dentro desta classe , responsável pelo funcionamento da tree
-
-    private class Node {
-   
     private Node root; // estado inicial da arvore
     private static final double CONSTANTE = Math.sqrt(2);  //Constante utilizada no Upper Confidence Bound
     private long tempoExec; //tempo de execução do ciclo responsavel pelo MCTS
-
 
     public MonteCarlo(Tabela tabela, long tempoExec) {  //Construtor da classe MonteCarlo , com isto conseguimos utilizar o MonteCralo no ficheiro Connect4  
         this.tempoExec = tempoExec; 
         Tabela newtabela = new Tabela(tabela);
         root = new Node(null, newtabela);
     }
+
+    //Classe privada Node utilizada apenas dentro desta classe , responsável pelo funcionamento da tree
+
+    private class Node {
+   
+
+
         private Node parent;                
         private Node[] children;        //array de filhos de um certo nó.O Node[] children representa as localizações onde se pode jogar na proxima jogada
         private int visits;             //numero de vezes que foi visitado
@@ -201,19 +201,23 @@ public class MonteCarlo extends Algoritmos {
 
         }
         return 0;                                         //Em caso de empate retorna 0
-    /*OBS :Optamos por retornar um valor nulo em caso de empate , porque assim conseguimos maximizar as chances de vitoria do algoritmo*/
+    
+    /*OBS :Optamos por retornar um valor nulo em caso de empate ,
+    porque assim conseguimos maximizar as chances de vitoria do algoritmo*/
+    
     }
 
     
     //RETROPROPAGAÇÃO
 
-    /*realiza a backpropagation até á raiz , incrementando o vistory e as visitas dos nós acima do expandedNode até á root*/
+    /*realiza a retropropagação até á raiz , incrementando o victory e
+     as visitas dos nós acima do expandedNode até á root*/
     private void backpropagate(Node expandedNode, double simulationResult) {
         Node currentNode = expandedNode;
         while(currentNode != null) {
-            currentNode.visits++;                      //Aumenta o numero de visitas
+            currentNode.visits++;                            //Aumenta o numero de visitas
             currentNode.incrementVictory(simulationResult);  //Incrementa o numero de vitorias
-            currentNode = currentNode.parent;               //Passa para o Node Pai
+            currentNode = currentNode.parent;                //Passa para o Node Pai
         }
     }
 

@@ -1,8 +1,10 @@
         
 
-        /*Este ficheiro contem a estrutura Tabela utilizada para a implementação do jogo dos 4 em linha (Connect Four).
-        Juntamente com alguns métodos auxiliares para o funcionamento dos algoritmos que se encontram nos ficheiros 
-        Algoritmos(Minimax e Alpha-Beta Prunning) e MC_AI(Monte Carlo Tree Search)  */
+        /*----------------------------------------------------------------------------------------------------------------
+        //Este ficheiro contem a estrutura Tabela utilizada para a implementação do jogo dos 4 em linha (Connect Four). //
+        //Juntamente com alguns métodos auxiliares para o funcionamento dos algoritmos que se encontram nos ficheiros   //
+        //Algoritmos(Minimax e Alpha-Beta Prunning) e MC_AI(Monte Carlo Tree Search)                                    //
+        ----------------------------------------------------------------------------------------------------------------*/
 
 import java.util.*;
 import java.lang.*;
@@ -355,13 +357,14 @@ public class Tabela {
         }
         return total; 
     }
-        
+            
+            //Método para determinar se uma poça pode ser colocada numa determinada coluna
          public boolean canPlace(Tabela t, int  i) {
             if(t.arr[0][i] == '-')return true;
 
             return false;
         }
-
+            //Função auxiliar do play utilizada no MonteCarlo
          public Tabela auxPlay(Tabela t, int move) {
             if(t.lastplayer == 'x') 
                 return play(t, 'o', move);
