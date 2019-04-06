@@ -202,8 +202,7 @@ public class MonteCarlo extends Algoritmos {
         }
         return 0;                                         //Em caso de empate retorna 0
     
-    /*OBS :Optamos por retornar um valor nulo em caso de empate ,
-    porque assim conseguimos maximizar as chances de vitoria do algoritmo*/
+  
     
     }
 
