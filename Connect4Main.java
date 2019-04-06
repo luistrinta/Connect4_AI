@@ -851,12 +851,13 @@ public class Connect4Main extends Algoritmos {
 
 
 
-                    int x = minimax_play(t, minimaxProf);
-                    System.out.println("Computador jogou na :" + t.bestY);
-                    t = play(t, 'x', t.bestY);
-                    printTabela(t);
-                    System.out.println("0 1 2 3 4 5 6");
 
+                    //player
+                    t = playerMovement(t, 'o' );
+                    printTabela(t);
+                    System.out.println(scoreSum(t));
+
+                    System.out.println("0 1 2 3 4 5 6");
 
                     if(checkWinners(t, 'x')) {
                         System.out.println("PC venceu");
@@ -868,12 +869,11 @@ public class Connect4Main extends Algoritmos {
                         return;
                     }
 
-                    t = playerMovement(t, 'o' );
+                    int x = minimax_play(t, minimaxProf);
+                    System.out.println("Computador jogou na :" + t.bestY);
+                    t = play(t, 'x', t.bestY);
                     printTabela(t);
-                    System.out.println(scoreSum(t));
-
                     System.out.println("0 1 2 3 4 5 6");
-
 
                     if(checkWinners(t, 'x')) {
                         System.out.println("PC venceu");
@@ -902,10 +902,10 @@ public class Connect4Main extends Algoritmos {
 
                 while(!isCompleted(t)) {
 
-                    int x = alpha_beta_play(t, alphaBetaProf, Integer.MIN_VALUE, Integer.MAX_VALUE, 'x');
-                    System.out.println("Computador jogou na :" + t.bestY);
-                    t = play(t, 'x', t.bestY);
+                    t = playerMovement(t, 'o' );
                     printTabela(t);
+                    System.out.println(scoreSum(t));
+
                     System.out.println("0 1 2 3 4 5 6");
 
 
@@ -920,12 +920,12 @@ public class Connect4Main extends Algoritmos {
                         return;
                     }
 
-
-                    t = playerMovement(t, 'o' );
+                    int x = alpha_beta_play(t, alphaBetaProf, Integer.MIN_VALUE, Integer.MAX_VALUE, 'x');
+                    System.out.println("Computador jogou na :" + t.bestY);
+                    t = play(t, 'x', t.bestY);
                     printTabela(t);
-                    System.out.println(scoreSum(t));
-
                     System.out.println("0 1 2 3 4 5 6");
+
 
 
                     if(checkWinners(t, 'x')) {
